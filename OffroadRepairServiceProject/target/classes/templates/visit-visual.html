@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head"></head>
+<body>
+<header th:replace="fragments/commons::nav"></header>
+<main>
+    <div class="container bg-blur rounded mt-1 mb-4">
+        <div class="row mt-1 mb-2">
+            <div class="col-6 mt-1 mb-1">
+
+                <h3 class="mySticky bg-gray text-dark  mb-0 mt-2">Visit information</h3>
+
+                <div class="bg-dark rounded " style="height: 70vh; overflow: auto">
+                    <div th:if="${visits.empty}">
+                        <p>No visits found for the given license plate.</p>
+                    </div>
+
+                    <div th:each="visit : ${visits}">
+                        <div class="visit-details">
+                            <p>Car Make: <span th:text="${visit.carMake}"></span></p>
+                            <p>Car Model: <span th:text="${visit.carModel}"></span></p>
+                            <p>License Plate: <span th:text="${visit.licensePlate}"></span></p>
+                            <p>Date Reserved: <span th:text="${visit.dateReserved}"></span></p>
+                        </div>
+                        <hr class="hr-3 w-25 bg-white"/>
+
+                        <h3 class="mySticky bg-gray text-dark  mb-0 mt-2">Reserved parts</h3>
+
+                        <div class="bg-dark rounded m-auto" style="height: 68.5vh; overflow: auto">
+                            <table class="table table-striped table-dark">
+                                <tr>
+                                    <th>Part</th>
+                                    <th>Time Needed</th>
+                                    <th>Price</th>
+                                </tr>
+                                <tr th:each="part : ${visit.reservedParts}">
+                                    <td th:text="${part.manufacturer + ' - ' + part.partName}"></td>
+                                    <td th:text="${part.getTimeNeededToChange()}"></td>
+                                    <td th:text="${part.price + ' BGN'}"></td>
+                                </tr>
+                            </table>
+                            <div class="mt-2" th:text="'Total Time: ' + ${visit.totalTime} + ' min'"></div>
+                            <div class="mt-2" th:text="'Total Price: ' + ${visit.totalPrice} + ' BGN'"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="fragments/commons::footer"></footer>
+</body>
+</html>
+

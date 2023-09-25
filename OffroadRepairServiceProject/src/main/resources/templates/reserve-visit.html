@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head"></head>
+<body>
+<header th:replace="fragments/commons::nav"></header>
+<main>
+  <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Reserve visit</span></h1>
+  <hr class="hr-3 w-25 bg-white"/>
+
+  <form class="mx-auto w-25 bg-blur rounded" method="post" action="/visits/add-visit" th:object="${visitDTO}">
+
+
+    <div class="form-group">
+      <div class="label-holder text-white textCol d-flex justify-content-center">
+        <label for="carMake" class="h4 mb-2">Car Make</label>
+      </div>
+
+      <input th:field="*{carMake}" th:errorclass="'is-invalid alert-danger'" type="text" class="form-control" id="carMake" name="carMake"/>
+      <small class="invalid-feedback text-danger">CarMake error message</small>
+    </div>
+
+    <div class="form-group">
+      <div class="label-holder textCol d-flex justify-content-center">
+        <label for="carModel" class="h4 mb-2 text-white">Car Model</label>
+      </div>
+
+      <input th:field="*{carModel}" th:errorclass="'is-invalid alert-danger'" type="text" class="form-control" id="carModel" name="carModel"/>
+      <small class="invalid-feedback text-danger">CarModel name error</small>
+    </div>
+
+    <div class="form-group">
+      <div class="label-holder text-white textCol d-flex justify-content-center">
+        <label for="dateReserved" class="h4 mb-2">Date reserved</label>
+      </div>
+
+      <input th:field="*{dateReserved}" th:errorclass="'is-invalid alert-danger'" type="date" class="form-control" id="dateReserved" name="dateReserved"/>
+      <small class="invalid-feedback text-danger">Date reserved date error</small>
+    </div>
+
+    <div class="form-group">
+      <div class="label-holder text-white textCol d-flex justify-content-center">
+        <label for="licensePlate" class="h4 mb-2">License Plate</label>
+      </div>
+
+      <input th:field="*{licensePlate}" th:errorclass="'is-invalid alert-danger'" type="text"  class="form-control" id="licensePlate" name="licensePlate"/>
+      <small class="invalid-feedback text-danger">License plate error message</small>
+    </div>
+
+    <div class="button-holder d-flex justify-content-center">
+      <button type="submit" class="btn btn-warning  mb-3" value="Register">Reserve visit</button>
+    </div>
+
+  </form>
+</main>
+<footer th:replace="fragments/commons::footer"></footer>
+</body>
+</html>
+

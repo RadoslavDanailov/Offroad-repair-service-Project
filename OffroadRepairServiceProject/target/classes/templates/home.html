@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head"></head>
+<body>
+<header th:replace="fragments/commons::nav"></header>
+<main>
+    <div class="container bg-blur rounded mt-1 mb-4">
+        <div class="row mt-1 mb-2">
+            <div class="col-6 mt-1 mb-1">
+
+                <h3 class="mySticky bg-gray text-dark  mb-0 mt-2">Suspension</h3>
+
+                <div class="bg-dark rounded " style="height: 20vh; overflow: auto">
+                    <div th:each="suspensionPart : ${parts.suspensionParts}" class="mt-1 rounded badge-info">
+                        <img class="mr-1" src="/img/png-suspension.png" alt="Suspension" width="30px" height="30px">
+                        <span th:text="|*{suspensionPart.manufacturer} - *{suspensionPart.partName} (*{suspensionPart.getTimeNeededToChange()})|"></span>
+                        <span class="ml-3" th:text="'Price: ' + ${suspensionPart.price}" style="color: white;"></span>
+                        <a class="ml-3 text-danger" th:href="@{/home/add-part-to-cart/{id}(id = ${suspensionPart.id})}">Add</a>
+                    </div>
+                </div>
+
+                <h3 class="mySticky bg-gray text-dark  mb-0 mt-2">Body</h3>
+
+                <div class="bg-dark rounded " style="height: 20vh; overflow: auto">
+                    <div th:each="bodyPart : ${parts.bodyParts}" class="mt-1 rounded badge-info">
+                        <img class="mr-1" src="/img/png-body.png" alt="Body" width="30px" height="30px">
+                        <span th:text="|*{bodyPart.manufacturer} - *{bodyPart.partName} (*{bodyPart.getTimeNeededToChange()})|"></span>
+                        <span class="ml-3" th:text="'Price: ' + ${bodyPart.price}" style="color: white;"></span>
+                        <a class="ml-3 text-danger" th:href="@{/home/add-part-to-cart/{id}(id = ${bodyPart.id})}">Add</a>
+                    </div>
+                </div>
+
+                <h3 class="mySticky bg-gray text-dark  mb-0 mt-2">Engine</h3>
+
+                <div class="bg-dark rounded " style="height: 20vh; overflow: auto">
+                    <div th:each="enginePart : ${parts.engineParts}" class="mt-1 rounded badge-info">
+                        <img class="mr-1" src="/img/png-engine.png" alt="Engine" width="30px" height="30px">
+                        <span th:text="|*{enginePart.manufacturer} - *{enginePart.partName} (*{enginePart.getTimeNeededToChange()})|"></span>
+                        <span class="ml-3" th:text="'Price: ' + ${enginePart.price}" style="color: white;"></span>
+                        <a class="ml-3 text-danger" th:href="@{/home/add-part-to-cart/{id}(id = ${enginePart.id})}">Add</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mt-1 mb-1">
+                <h3 class="mySticky bg-gray text-dark  mb-0 mt-2">My Cart </h3>
+
+                <h6 class="mySticky bg-gray text-dark  mb-0 mt-0">My preferred spare parts</h6>
+
+                <div class="bg-dark rounded m-auto" style="height: 68.5vh; overflow: auto">
+
+                    <table class="table table-striped table-dark">
+                        <tr th:each="part : ${cart}">
+                            <th scope="row"><img class="mr-2 " src="/img/png-cart.png" alt="Cart" width="30px" height="30px"></th>
+                            <td th:text="|*{part.manufacturer} - *{part.partName} (*{part.getTimeNeededToChange()}) Price: ${part.price}|">
+                                <span></span>
+                            </td>
+                            <td>
+                                <a class="ml-3 text-danger" th:href="@{/home/remove-part-from-cart/{id}(id = ${part.id})}">Remove</a>
+                            </td>
+                        </tr>
+
+                    </table>
+                    <div class="mt-2" th:text="'Total Time: ' + ${totalTimeNeededToChange} + min"></div>
+                    <div class="mt-2" th:text="'Total Price: ' + ${totalPrice} + BGN"></div>
+
+                </div>
+                <a href="/home/remove-all-parts-from-cart" class="mt-1 mb-0 btn btn-danger">Remove all</a>
+                <a href="/visits/add-visit" class="mt-1 mb-0 btn btn-danger" style="background-color: green; border-color: green;">Reserve visit</a>
+
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="fragments/commons::footer"></footer>
+</body>
+</html>

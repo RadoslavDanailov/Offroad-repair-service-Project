@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Offroad equipment service</title>
+    <!--    /*title of webpage in browser*/-->
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <style>
+        /* Add style block to override existing styles */
+        .nav-link.login,
+        .nav-link.register {
+            color: yellow !important;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg bg-nav rounded">
+        <a class="nav-link text-white active h5" href="/"> <span style="text-decoration: underline;">Offroad equipment service</span></a>
+        <a th:if="${@loggedUser.isLogged()}" class="nav-link text-yellow active h5 add-parts" style="background-color: blue; border-color: violet;" href="/parts/add-part">Add
+            Parts</a>
+        <style>
+    /* Add style block to override existing styles */
+    .nav-link.login,
+    .nav-link.register,
+    .nav-link.add-parts {
+        color: yellow !important;
+    }
+        </style>
+
+        <a th:if="${@loggedUser.isLogged()}" class="nav-link text-yellow active h5 check-visits" style="background-color: green; border-color: green;" href="/visits/check-visit">Check visits </a>
+
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+            <ul class="navbar-nav row">
+                <li th:if="${!@loggedUser.isLogged()}" class="nav-item col-md-4">
+                    <a class="nav-link text-white active h5 login" href="/users/login">Login</a>
+                </li>
+
+                <li th:if="${!@loggedUser.isLogged()}" class="nav-item col-md-4">
+                    <a class="nav-link text-white active h5 register" href="/users/register">Register</a>
+                </li>
+
+                <li th:if="${@loggedUser.isLogged()}" class="nav-item col-md-4">
+                    <a class="nav-link text-white active h5" href="/users/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<footer class="footer bg-transparent  py-2">
+    <div class="container-fluid text-center">
+        <div class="footer-background h5 text-white fixed-bottom" style="color: yellow;">
+            &copy; Offroad equipment service. All rights reserved.
+        </div>
+    </div>
+</footer>
+</body>
+</html>

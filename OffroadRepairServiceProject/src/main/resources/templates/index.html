@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head"></head>
+<body>
+<header th:replace="fragments/commons::nav"></header>
+<main>
+    <div class="container bg-blur rounded mt-5 ">
+        <h1>Welcome to Offroad equipment service</h1>
+        <hr class="my-3 bg-green w-50"/>
+
+        <p class="h4">&nbsp;&nbsp;&nbsp;Offroad Equipment Service offers a professional offroad equipment for your 4x4. With our highly skilled technicians,
+            manufacturer recommended procedures and the promise of genuine spare parts we are your best choice.
+            For better experience to our customers, experienced mechanic will look at your car's condition
+            and offer you the best offroad tuning for your needs.</p>
+        <hr class="my-3 bg-white w-75"/>
+
+        <h3>
+            <a class="text-primary" href="/users/login">Login</a>
+            if you have an account or
+            <a class="text-primary" href="/users/register">Register</a>
+            now and check our offers.
+        </h3>
+    </div>
+</main>
+<footer th:replace="fragments/commons::footer"></footer>
+</body>
+</html>
