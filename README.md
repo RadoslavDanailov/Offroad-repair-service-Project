@@ -3,7 +3,8 @@ My own Java Spring Web project with SQL database
 
 This application simplifies the process of managing spare parts and workshop visits for offroad car repairs.
 
-Description: The Offroad Repair Service is a software application designed to manage specific spare parts for cars within the database of an offroad car service. 
+Description: 
+The Offroad Repair Service is a software application designed to manage specific spare parts for cars within the database of an offroad car service. 
 This application comes with built-in functionality for reserving workshop visit slots for vehicles. Each visit includes a list of selected repair parts, the estimated time required for replacement, 
 and the associated parts cost. The primary goal of this program is to streamline car repair processes, saving time for service providers, while also providing automatic estimates for repair duration 
 and parts cost.
